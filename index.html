@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+
+</head>
+<style>
+
+.btn-search {
+	  background: #ccc;
+	  border-radius: 0;
+	  color: #fff;
+	  border-width: 1px;
+	  border-style: solid;
+	  border-color: #1c1c1c;
+	}
+	.btn-search:link, .btn-search:visited {
+	  color: #fff;
+	}
+	.btn-search:active, .btn-search:hover {
+	  background: grey;
+      color: #fff;
+
+    }
+      
+    .card-body a {
+      word-break: break-all;
+    }
+
+    .articleHeadline {
+      line-height: 1.5;
+    }
+
+</style>
+
+
+<body>
+    <div class="container">
+        <div class="jumbotron" style="background-color: #20315A ; color: white;">
+            <h1 class="text-center">
+                <strong>
+                    <i class= "fa fa-newspaper-o"></i>New York Times Search</strong>
+            </h1>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+            <br>
+                <div class="card">
+                    <div class="card-header" style="background-color: #20315A ; color: white;">
+                            <strong><i class="fa  fa-list-alt"></i>Search Parameters</strong>
+                          </div>
+                    <div class=card-body"></div>
+
+        <form>
+            <div class="form-group">
+                <label for="exampleInputSearch">Search Term:</label>
+                <input type="search" class="form-control" id="search-term">
+            </div>
+            <!--needs a dropdown-->
+            <div class="form-group">
+                <label for="exampleInputSearch">Number of Records to Retrieve:</label>
+                <select class="custom-select">
+                    <option selected value="1">1</option>
+                    <option value="5" selected>5</option>
+                    <option value="10">10</option>
+                </select>
+                
+            </div>
+            <div class="form-group">
+                <label for="exampleInputSearch">Start Year (Optional):</label>
+                <input type="search" class="form-control" id="exampleInputSearch">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputSearch">End Year (Optional):</label>
+                <input type="search" class="form-control" id="exampleInputSearch">
+            </div>
+
+        <button class="btn btn-search" type="button"><i class="fa fa-search fa-fw"></i> Search</button>
+        <button class="btn btn-clear" type="button"><i class="fa fa-clear fa-fw"></i>Clear Results</button>
+        </form>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+          <br>
+          <div class="card">
+            <div class="card-header" style="background-color: #20315A ; color: white;">
+                    <strong>
+                      <i class="fa fa-table"></i> Top Articles</strong>
+                      <div class="card-body" id="article-section" style="background-color: #fff;">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+         
+    <!--footer section-->         
+        <div class="row">
+            <div class="col-sm-12">
+            <h5>This is the footer</h5>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+    </body>
+
+<script type="text/javascript" src="nytsearch.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+
+
+var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=election&api-key=RusyGQkfIwEwq1UCLAtFaybmNbJIs5KH";
+$.ajax({
+    url: queryURL,
+    method: "GET"
+}).then(function(response) {
+    console.log(response);
+    console.log(response.response.docs[0].abstract);
+    console.log(response.response.docs[0].keywords[0].value);
+    console.log(response.response.meta.time);
+})
+//search button onclick event
+$(".btn-search").on("click", function() {
+    console.log(response.response.docs);
+
+
+}
+
+
+</script>
+</html>
